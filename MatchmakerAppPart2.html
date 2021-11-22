@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+
+
+<head>
+    <meta charset="UTF"
+    <title>Matchmaker: Lewis University Addition</title>
+</head>
+
+<body>
+    <h1>Matchmaker App</h1>
+    <p>Below is a list of five statements regarding Lewis University. For each statement, there is an option of four responses. Please select the response that most accurately reflects your opinion regarding the statement. Your total compatibility will be displayed at the bottom of the page. The compatibility score indicates as followed;
+        75-100: Very strong match. 
+        50-74: Strong match. 
+        25-49: Weak match. 
+        0-24: Very weak match. 
+         
+        </p>
+
+   <label>Lewis University food could be better...</label><br />
+   <select id="q1">
+    <option value="5">Absolutely, I'm gonna vommit </option>
+    <option value="4">Yes, it can be bad at times </option>
+    <option value="3">I really dont care </option>
+    <option value="2">It's not too bad, what are you complaining about</option>
+    <option value="1">My fathers the CEO of Sedexo</option>
+   </select>
+
+   <br /><br />
+   <label>Morning classes are better than afternoon classes</label><br />
+   <select id="q2">
+    <option value="5">I wake up two hours before my 8am and practice Tai Chi</option>
+    <option value="4">It's hard to get up, but good to get it out of the way</option>
+    <option value="3">I'm taking 20 credit hours, so I'm in class all day</option>
+    <option value="2">Im too tired in the Morning, so I prefur afternoon clases</option>
+    <option value="1">I don't go to class</option>
+   </select>
+
+   <br /><br />
+   <label>Bedcheck Charlie looks kinda scary</label><br />
+   <select id="q3">
+    <option value="5">I see him in my nightmares</option>
+    <option value="4">Ugly... but tolerable</option>
+    <option value="3">He's alright</option>
+    <option value="2">I think he's cool, I wish I was a pilot</option>
+    <option value="1">I'm in an unhealthy relationship with him</option>
+   </select>
+
+   <br /><br />
+   <label>Lewis University Campus is beutiful</label><br />
+   <select id="q4">
+    <option value="5">Of Course! What other university has an airport on campus</option>
+    <option value="4">Its pretty, lots of trees</option>
+    <option value="3">Does it matter? It's winter here half the time anyways</option>
+    <option value="2">Pretty ugly, the library was built in the 60's, an architectural dark age </option>
+    <option value="1">Horrible, They should have built a bar where the solar pannels are</option>
+   </select>
+
+   <br /><br />
+   <label>Winter break is better than summer break</label><br />
+   <select id="q5">
+    <option value="5">For sure, Chrismas at home is the best</option>
+    <option value="4">yeah, its nice to have a break in between semesters</option>
+    <option value="3">Maybe, I hate the cold though</option>
+    <option value="2">I prefur summer break better, much better weather</option>
+    <option value="1">I never take any breaks, the grind doesn't stop</option>
+   </select>
+
+
+   <br /><br /><br />
+   <button onclick = 'calculateCompatibility()'>Calculate Compatibility</button>
+   
+   <p id='compatibility'></p>
+
+    
+<script>
+console.log('Starting Matchmaker App');
+
+function calculateCompatibility() {
+    console.log('calculateCompatibility()');
+
+    const DESIRED_RESPONCE = [
+        4,
+        4,
+        1,
+        5,
+        2, 
+    ]
+
+    const MAX_SCORE = 25; 
+
+    let question1Responce = document.getElementById('q1').selectedOptions[0].value; 
+    let question2Responce = document.getElementById('q2').selectedOptions[0].value; 
+    let question3Responce = document.getElementById('q3').selectedOptions[0].value; 
+    let question4Responce = document.getElementById('q4').selectedOptions[0].value; 
+    let question5Responce = document.getElementById('q5').selectedOptions[0].value; 
+
+
+    console.log('Question 1 Answers:');
+    console.log(document.getElementById('q1').selectedOptions[0].text)
+    console.log(document.getElementById('q1').selectedOptions[0].value)
+    console.log(question1Responce)
+
+    console.log('Question 2 Answers:');
+    console.log(document.getElementById('q2').selectedOptions[0].text)
+    console.log(document.getElementById('q2').selectedOptions[0].value)
+    console.log(question2Responce)
+
+    console.log('Question 3 Answers:');
+    console.log(document.getElementById('q3').selectedOptions[0].text)
+    console.log(document.getElementById('q3').selectedOptions[0].value)
+    console.log(question3Responce)
+
+    console.log('Question 4 Answers:');
+    console.log(document.getElementById('q4').selectedOptions[0].text)
+    console.log(document.getElementById('q4').selectedOptions[0].value)
+    console.log(question4Responce)
+
+    console.log('Question 5 Answers:');
+    console.log(document.getElementById('q5').selectedOptions[0].text)
+    console.log(document.getElementById('q5').selectedOptions[0].value)
+    console.log(question5Responce)
+
+
+    let question1Compatibility = 5 - Math.abs(question1Responce - DESIRED_RESPONCE[0])
+    let question2Compatibility = 5 - Math.abs(question2Responce - DESIRED_RESPONCE[1])
+    let question3Compatibility = 5 - Math.abs(question3Responce - DESIRED_RESPONCE[2])
+    let question4Compatibility = 5 - Math.abs(question4Responce - DESIRED_RESPONCE[3])
+    let question5Compatibility = 5 - Math.abs(question5Responce - DESIRED_RESPONCE[4])
+
+    console.log(question1Compatibility);
+    console.log(question2Compatibility);
+    console.log(question3Compatibility);
+    console.log(question4Compatibility);
+    console.log(question5Compatibility);
+
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
+
+    totalCompatibility *= 100 / MAX_SCORE
+    totalCompatibility = Math.round(totalCompatibility)
+    console.log(totalCompatibility);
+
+
+
+
+    document.getElementById('compatibility').innerHTML ='Your compatibility is: ' + totalCompatibility;
+}
+
+</script>
+
+
+</body>
+<!--
+    Author: Jack Tegeder 
+    
+    Project: Matchmaker App
+-->
+
+
+
+</html>
+
